@@ -1,8 +1,11 @@
-import React from 'react'
+import NavbarSecond from "../components/NavbarSecond"
 
 const Login = () => {
   return (
-    <div>Login</div>
+    <div>
+      <NavbarSecond />
+      Login
+    </div>
   )
 }
 
