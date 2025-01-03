@@ -1,8 +1,13 @@
 import { BiChevronRight } from 'react-icons/bi';
 import NavbarSecond from '../components/NavbarSecond';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
 const Signup = () => {
+	const [rememberLogin, setRememberLogin] = useState(true)
+	const [email, setEmail] = useState("")
+	const [password, setPassword] = useState("")
+
 	return (
 		<>
 			<NavbarSecond />
@@ -14,7 +19,7 @@ const Signup = () => {
 				/>
 
 				<div className="bg-black/70 fixed top-0 left-0 w-full h-screen" />
-				<div className="relative z-20 flex flex-col justify-center items-center h-full text-center px-4">
+				<div className="relative z-20 flex flex-col justify-center items-center h-full text-center">
 					<h1 className="text-white text-5xl sm:text-6xl font-bold mb-4">
 						Unlimited movies, TV
 					</h1>
@@ -29,11 +34,20 @@ const Signup = () => {
 						membership.
 					</p>
 
-					<form className="flex flex-col sm:flex-row justify-center items-center w-full max-w-md pt-3">
+					<form className="justify-center items-center w-full max-w-md pt-3">
 						<input
 							className="w-full opacity-70 sm:w-2/3 px-4 py-3 rounded-sm border border-gray-300 text-white bg-black focus:outline-none focus:border-white-500 mb-4 sm:mb-0 sm:mr-4"
 							type="email"
 							placeholder="Email address"
+							value={email}
+							onChange={(e) => { setEmail(e.target.value) }}
+						/>
+						<input
+							className="w-full opacity-70 sm:w-2/3 px-4 py-3 pt-2 rounded-sm border border-gray-300 text-white bg-black focus:outline-none focus:border-white-500 mb-4 sm:mb-0 sm:mr-4"
+							type="password"
+							placeholder="Password"
+							value={password}
+							onChange={(e) => { setEmail(e.target.value) }}
 						/>
 						<button
 							className="w-full flex items-center sm:w-auto p-1 bg-[#E50914] text-white text-lg font-nsans-bold rounded-md hover:bg-red-700 transition duration-300"
