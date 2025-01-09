@@ -67,10 +67,10 @@ const Signup = () => {
 							Need help?
 						</p>
 					</div>
-          <p className='mt-4'>
-            <span className='text-gray-500 font-nsans-medium mr-2'>Already subscribed to Netflix?</span>
-            <Link to='/login' className='text-white font-nsans-bold hover:underline'>Login</Link>
-            </p>
+					<p className='mt-4'>
+						<span className='text-gray-500 font-nsans-medium mr-2'>Already subscribed to Netflix?</span>
+						<Link to='/login' className='text-white font-nsans-bold hover:underline'>Login</Link>
+					</p>
 				</div>
 			</div>
 		</>

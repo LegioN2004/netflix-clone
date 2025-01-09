@@ -18,7 +18,7 @@ const Navbar = () => {
 					</Link>
 					<Link to="/signup">
 						<button className="capitalise text-sm bg-red-600 rounded cursor-pointer px-4 py-2">
-							Sign In
+							Sign Up
 						</button>
 					</Link>
 				</div>
