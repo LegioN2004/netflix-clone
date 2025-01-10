@@ -1,12 +1,28 @@
-import { BiChevronRight } from 'react-icons/bi';
-import NavbarSecond from '../components/NavbarSecond';
-import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import { BiChevronRight } from 'react-icons/bi';
+import { Link, useNavigate } from 'react-router-dom';
+import NavbarSecond from '../components/NavbarSecond';
+import { UserAuth } from '../context/AuthContext';
 
 const Signup = () => {
 	const [rememberLogin, setRememberLogin] = useState(true)
 	const [email, setEmail] = useState("")
 	const [password, setPassword] = useState("")
+
+	const { User, Signup } = UserAuth();
+
+	const navigate = useNavigate();
+
+	const handleFormSubmit = async (e) => {
+		e.preventDefault(); // to stop it from refreshing when the form submit occurs
+
+		try {
+			await Signup(email, password);
+			navigate('/');
+		} catch (e) {
+			console.log(e);
+		}
+	}
 
 	return (
 		<>
@@ -19,7 +35,7 @@ const Signup = () => {
 				/>
 
 				<div className="bg-black/70 fixed top-0 left-0 w-full h-screen" />
-				<div className="relative z-20 flex flex-col justify-center items-center h-full text-center">
+				<div className="fixed w-full z-20 flex flex-col justify-center items-center h-full text-center">
 					<h1 className="text-white text-5xl sm:text-6xl font-bold mb-4">
 						Unlimited movies, TV
 					</h1>
@@ -34,44 +50,54 @@ const Signup = () => {
 						membership.
 					</p>
 
-					<form className="justify-center items-center w-full max-w-md pt-3">
+					<form
+						onSubmit={handleFormSubmit}
+						className="justify-center flex flex-col items-center w-full max-w-[600px] p-3"
+					>
 						<input
-							className="w-full opacity-70 sm:w-2/3 px-4 py-3 rounded-sm border border-gray-300 text-white bg-black focus:outline-none focus:border-white-500 mb-4 sm:mb-0 sm:mr-4"
+							className="opacity-70 sm:w-2/3 px-4 py-3 rounded-sm border border-gray-300 text-white bg-black focus:outline-none focus:border-white-500 sm:mb-0 sm:mr-4"
 							type="email"
 							placeholder="Email address"
+							autoComplete='email'
 							value={email}
-							onChange={(e) => { setEmail(e.target.value) }}
+							onChange={(e) => setEmail(e.target.value)}
 						/>
 						<input
-							className="w-full opacity-70 sm:w-2/3 px-4 py-3 pt-2 rounded-sm border border-gray-300 text-white bg-black focus:outline-none focus:border-white-500 mb-4 sm:mb-0 sm:mr-4"
+							className="opacity-70 sm:w-2/3 px-4 py-3 rounded-sm border border-gray-300 text-white bg-black focus:outline-none focus:border-white-500 mb-4 sm:mb-0 sm:mr-4"
 							type="password"
 							placeholder="Password"
+							autoComplete='current-password'
 							value={password}
-							onChange={(e) => { setEmail(e.target.value) }}
+							onChange={(e) => setPassword(e.target.value)}
 						/>
 						<button
-							className="w-full flex items-center sm:w-auto p-1 bg-[#E50914] text-white text-lg font-nsans-bold rounded-md hover:bg-red-700 transition duration-300"
+							className="flex items-center sm:w-auto p-1 bg-[#E50914] text-white text-lg font-nsans-bold rounded-md hover:bg-red-500 transition duration-300"
 							type="submit"
 						>
 							Get Started
 							<BiChevronRight className="ml-2 h-9 w-4" />
 						</button>
-					</form>
-
-					<div className="flex justify-between items-center w-full max-w-md mt-4 px-4">
-						<label className="text-gray-400">
-							<input type="checkbox" className="mr-2 rounded-md" />
-							Remember me
-						</label>
-						<p className="text-gray-400 cursor-pointer hover:underline">
-							Need help?
+						<div className="flex justify-between items-center w-full max-w-md mt-4 px-4">
+							<label className="text-gray-400">
+								<input
+									type="checkbox"
+									className="mr-2 rounded-md"
+									checked={rememberLogin}
+									onChange={() => setRememberLogin(!rememberLogin)}
+								/>
+								Remember me
+							</label>
+							<p className="text-gray-400 cursor-pointer hover:underline">
+								Need help?
+							</p>
+						</div>
+						<p className='mt-4'>
+							<span className='text-gray-500 font-nsans-medium mr-2'>Already subscribed to Netflix?</span>
+							<Link to='/login' className='text-white font-nsans-bold hover:underline'>Login</Link>
 						</p>
-					</div>
-					<p className='mt-4'>
-						<span className='text-gray-500 font-nsans-medium mr-2'>Already subscribed to Netflix?</span>
-						<Link to='/login' className='text-white font-nsans-bold hover:underline'>Login</Link>
-					</p>
+					</form>
 				</div>
+
 			</div>
 		</>
 	);

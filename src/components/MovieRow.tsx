@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import MovieItem from './MovieItem';
+import { MovieItem } from './MovieItem';
 
 const MovieRow = ({ title, url }) => {
 	const [movies, setMovies] = useState([]);

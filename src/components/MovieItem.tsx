@@ -2,8 +2,8 @@ import { useState } from "react";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { fetchImage } from "../services/MovieServices";
 
-const MovieItem = ({ movie }: string): string => {
-  const [like, setLike] = useState(false);
+export const MovieItem = ({ movie }: string): string => {
+	const [like, setLike] = useState(false);
 
 	const { title, backdrop_path, poster_path } = movie;
 	return (

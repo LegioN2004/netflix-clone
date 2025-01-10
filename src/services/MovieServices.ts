@@ -1,4 +1,4 @@
-const API_KEY = import.meta.env.VITE_API_KEY;
+const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 // written like this cause the baseUrl remains same for the starting part of the url, so yeah and the rest of the stuff below are th endpoints that we'll required and the website has that we'll be using
 const baseUrl: string = 'https://api.themoviedb.org/3';
 
