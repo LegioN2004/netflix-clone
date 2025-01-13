@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { BiChevronRight } from 'react-icons/bi';
 import { Link } from 'react-router-dom';
-import NavbarSecond from '../components/NavbarSecond';
+import Navbar from '../components/Navbar';
+// import NavbarSecond from '../components/NavbarSecond';
 
 const Login = () => {
 	const [rememberLogin, setRememberLogin] = useState(true)
@@ -16,7 +17,8 @@ const Login = () => {
 
 	return (
 		<>
-			<NavbarSecond />
+			{/* <NavbarSecond/> */}
+			<Navbar></Navbar>
 			<div className="relative h-screen pt-10">
 				<img
 					className="hidden sm:block absolute h-full w-full object-cover z-0 top-0 left-0"
