@@ -25,12 +25,12 @@ const Hero = () => {
     fetchMovies();
   }, []);
 
-  const truncate = (str: string, length: number) => {
+  const truncate = (str, length) => {
     if (!str) return "";
     return str.length > length ? str.slice(0, length) + "..." : str;
   };
 
-  const { title, backdrop_path, release_date, overview }: any = movie;
+  const { title, backdrop_path, release_date, overview } = movie;
 
   return (
     <>

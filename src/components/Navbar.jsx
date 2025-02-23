@@ -3,12 +3,12 @@ import logoMain from '../assets/logoMain.png';
 import { UserAuth } from '../context/AuthContext';
 
 const Navbar = () => {
-	const { user, logOut } = UserAuth();
+	const { User, Logout } = UserAuth();
 	const navigate = useNavigate();
 
 	const handleLogout = async () => {
 		try {
-			await logOut();
+			await Logout();
 			navigate('/');
 		} catch (error) {
 			console.log('Error in logging out', error);
@@ -38,7 +38,7 @@ const Navbar = () => {
 					</div>
 				</div>
 				{
-					user?.email ? (
+					User?.email ? (
 						<div className="pt-5 pr-12">
 							<Link to="/profile">
 								<button className="capitalise pr-2">Profile</button>

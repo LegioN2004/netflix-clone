@@ -1,33 +1,33 @@
 import { useState } from 'react';
 import { BiChevronRight } from 'react-icons/bi';
 import { Link, useNavigate } from 'react-router-dom';
-// import NavbarSecond from '../components/NavbarSecond';
-import { UserAuth } from '../context/AuthContext';
 import Navbar from '../components/Navbar';
+import { UserAuth } from '../context/AuthContext';
+// import NavbarSecond from '../components/NavbarSecond';
 
-const Signup = () => {
+const Login = () => {
 	const [rememberLogin, setRememberLogin] = useState(true)
 	const [email, setEmail] = useState("")
 	const [password, setPassword] = useState("")
 
-	const { User, Signup } = UserAuth();
-
+	const { Login } = UserAuth();
 	const navigate = useNavigate();
 
 	const handleFormSubmit = async (e) => {
 		e.preventDefault(); // to stop it from refreshing when the form submit occurs
 
 		try {
-			await Signup(email, password);
+			await Login(email, password);
 			navigate('/');
-		} catch (e) {
+		}
+		catch (e) {
 			console.log(e);
 		}
 	}
 
 	return (
 		<>
-			{/* <NavbarSecond /> */}
+			{/* <NavbarSecond/> */}
 			<Navbar></Navbar>
 			<div className="relative h-screen pt-10">
 				<img
@@ -94,8 +94,8 @@ const Signup = () => {
 							</p>
 						</div>
 						<p className='mt-4'>
-							<span className='text-gray-500 font-nsans-medium mr-2'>Already subscribed to Netflix?</span>
-							<Link to='/login' className='text-white font-nsans-bold hover:underline'>Login</Link>
+							<span className='text-gray-500 font-nsans-medium mr-2'>New to Netflix?</span>
+							<Link to='/signup' className='text-white font-nsans-bold hover:underline'>Sign up</Link>
 						</p>
 					</form>
 				</div>
@@ -103,6 +103,6 @@ const Signup = () => {
 			</div>
 		</>
 	);
-};
+}
 
-export default Signup;
+export default Login
